@@ -46,4 +46,16 @@ I have about 8 columns in the dataset that is:
 # EDA 
 ### Data Transformation:
 
+1)	I did a month-wise analysis ie how much active customers in each month. To do a monthly analysis of active customers. I made a new column Invoice_month by extracting the year and month values from the InvoiceDate column.
+
+2)	To understand the active customer I made a new column ie Type in that customer who is active are represented by ‘A’ and customers who cancelled transactions are denoted by ‘C’
+
+3)	Plot count plot by grouping by Invoice month and customerID and InvoiceNo and graph we observed that the count of customer and invoice keeps on increasing in every month(From the graph, we easily depict monthly active customer)
+
+
+![image](https://user-images.githubusercontent.com/117656346/217812260-fef6b622-1e6a-4165-9a92-fd8ee16dcb5d.png)
+
+Now How much customer keeps on p
+
+
 
