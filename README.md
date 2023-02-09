@@ -37,3 +37,13 @@ I have about 8 columns in the dataset that is:
 
 # Data Preprocessing
 
+1)	In a dataset about 8 columns and 379336 rows in a training dataset and about 8 columns and 162573 rows in a testing dataset
+	
+2)	Approx 25% null values are available in the description column but we can’t replace that values with mean, median and mode because customerID is uniquely identified, so basically have to drop nan values rows
+	
+3)	2626 duplicated values are available in the training dataset and 468 in the testing datasets, so I drop that duplicate values.
+
+# EDA 
+### Data Transformation:
+
+
