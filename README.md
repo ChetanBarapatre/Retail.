@@ -85,7 +85,13 @@ from heat map we get clear understanding of percentage of retension rate
 
 From the graph , it can be concluded that the user retention drops quite heavily, even from the second month 50% is the highest retention rate Retenion rate is high for users acquired in 2011-01 and 2010-12
 
+##Model Building
 
+1) Build a RFM (Recency Frequency Monetary) model. Recency means the number of days since a customer made the last purchase. Frequency is the number of purchase in a given period. It could be 3 months, 6 months or 1 year. Monetary is the total amount of money a customer spent in that given period. Therefore, big spenders will be differentiated among other customers such as MVP (Minimum Viable Product) or VIP.
+
+2) Here I apply some feature Engineering techniques to extract a relevant column from data for further RFM analysis  and feature construction technique for eg
+
+df_train['Sales_price'] = df_train['Quantity'] * df_train['UnitPrice']
 
 
 
