@@ -79,6 +79,11 @@ plt.show()
 
 ![image](https://user-images.githubusercontent.com/117656346/218060516-8a5fb8b8-5142-4215-b64b-f1bf9263cb4a.png)
 
+from heat map we get clear understanding of percentage of retension rate
+
+![image](https://user-images.githubusercontent.com/117656346/218068649-4cd4faf6-7c27-45ce-9c08-b834679abde9.png)
+
+From the graph , it can be concluded that the user retention drops quite heavily, even from the second month 50% is the highest retention rate Retenion rate is high for users acquired in 2011-01 and 2010-12
 
 
 
