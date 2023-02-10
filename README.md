@@ -55,7 +55,54 @@ I have about 8 columns in the dataset that is:
 
 ![image](https://user-images.githubusercontent.com/117656346/217812260-fef6b622-1e6a-4165-9a92-fd8ee16dcb5d.png)
 
-Now How much customer keeps on p
+4)  Now I have to check how many customers keep on purchasing(Retention rate) for that I created a new column by the name CohortMonth and in that group by CustomerID and Invoice_month and transform it to minimum
+
+df_train['CohortMonth']=df_train.groupby('CustomerID')['Invoice_month'].transform('min')
+df_test['CohortMonth']=df_test.groupby('CustomerID')['Invoice_month'].transform('min')
+
+With the help of these, I understand when the first invoice is generated for a particular customer fo eg
+
+![image](https://user-images.githubusercontent.com/117656346/218047789-c76e2886-5257-4028-9b5a-2b1755099b21.png)
+
+Customer 16126 become active on site from 2011-02
+
+
+cohort index is created for each row. The cohort index is the month difference between invoice month and cohort month for each row. By doing the deduction, I am able to know the month lapse between that specific transaction and the first transaction that user made on the website. This helps to check the user retention
+
+To understand graphically I plot pivot table to understand 
+
+![image](https://user-images.githubusercontent.com/117656346/218056783-1cada95c-6edf-41c8-8402-5c7363b7f46e.png)
+
+
+cohort_count.plot(figsize = (15,7))
+plt.show()
+
+![image](https://user-images.githubusercontent.com/117656346/218060516-8a5fb8b8-5142-4215-b64b-f1bf9263cb4a.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
