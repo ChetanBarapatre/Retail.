@@ -85,13 +85,55 @@ from heat map we get clear understanding of percentage of retension rate
 
 From the graph , it can be concluded that the user retention drops quite heavily, even from the second month 50% is the highest retention rate Retenion rate is high for users acquired in 2011-01 and 2010-12
 
-##Model Building
+##RFM Analysis
 
 1) Build a RFM (Recency Frequency Monetary) model. Recency means the number of days since a customer made the last purchase. Frequency is the number of purchase in a given period. It could be 3 months, 6 months or 1 year. Monetary is the total amount of money a customer spent in that given period. Therefore, big spenders will be differentiated among other customers such as MVP (Minimum Viable Product) or VIP.
 
 2) Here I apply some feature Engineering techniques to extract a relevant column from data for further RFM analysis  and feature construction technique for eg
 
 df_train['Sales_price'] = df_train['Quantity'] * df_train['UnitPrice']
+
+3) For further analysis, I require['InvoiceNo','InvoiceDate','CustomerID','Sales_price'] and with the help of these data frame I make a new data frame that consists of 
+[‘CustomerId’,’Recency’,’Frequency’,’MonetoryValue’] and values of RFM I calculated as 
+rfm = df_train.groupby('CustomerID').agg({'InvoiceDate':lambda x: (NOW-x.max()).days,
+                                          'InvoiceNo':lambda x: len(x),
+                                          'Sales_price':lambda x: sum(x)})
+
+rfm.rename(columns={'InvoiceDate':'Recency',
+                    'InvoiceNo':'Frequency',
+                    'Sales_price':'MonetaryValue'},inplace=True)
+		    
+4) Build RFM Segments. Give recency, frequency, and monetary scores individually by dividing them into quartiles.
+
+r_labels= range(4,0,-1)
+
+f_labels=range(1,5)
+
+m_labels=range(1,5)
+
+r_groups = pd.qcut(rfm['Recency'],q=4,labels=r_labels)
+
+f_groups = pd.qcut(rfm['Frequency'],q=4,labels=f_labels)
+
+m_groups = pd.qcut(rfm['MonetaryValue'],q=4,labels=m_labels)
+
+5) Get the RFM score by adding up the three ratings.
+
+rfm['RFM_score'] = rfm[['R','F','M']].sum(axis=1)
+
+rfm['RFM_score'] = rfm['RFM_score'].apply(lambda x: int(x))
+
+6)With the help of RFM score, I segregate customers into different groups (discretization)
+
+![Screenshot 2023-02-11 144126](https://user-images.githubusercontent.com/117656346/218250376-f01127b2-b1b3-433a-9f7d-293c0376f4f5.png)
+
+## Data Modeling
+
+1) For Model building I used Kmeans clusturing algorithm.we were able to build a model that can classify new customers into "low value" , "middle value" and "high value" groups. 
+
+![image](https://user-images.githubusercontent.com/117656346/218250891-4404a748-9611-402c-8b4f-bcc29a23e001.png)
+
+
 
 
 
